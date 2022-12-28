@@ -1,19 +1,5 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
-import styles from '../styles/Home.module.css';
-import { GetServerSideProps, NextPage } from 'next';
-import { AppProps } from 'next/app';
-import { Component } from 'react';
+import { GetServerSideProps } from 'next';
 import { getUnauthorizedSpotifyApi } from '../../../lib/spotify-api-client';
-import { redirect } from 'next/dist/server/api-utils';
-
-const SpotifyWebApi = require('spotify-web-api-node');
-
-type Cookies = {
-  accessToken: string | null;
-  refreshToken: string | null;
-};
 
 export const ACCESS_TOKEN = 'access_token';
 export const REFRESH_TOKEN = 'refresh_token';
