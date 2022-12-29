@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+
 import { getUnauthorizedSpotifyApi } from '../../../lib/spotify-api-client';
 
 export const ACCESS_TOKEN = 'access_token';

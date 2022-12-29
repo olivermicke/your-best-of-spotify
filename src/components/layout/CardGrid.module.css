@@ -1,0 +1,33 @@
+.cardDeck {
+  display: grid;
+  margin: 48px auto 0 auto;
+  grid-template-columns: 1fr;
+  grid-gap: 24px;
+}
+
+@media only screen and (min-width: 600px) {
+  .cardDeck {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .cardDeck {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card {
+  padding: 20px;
+  max-width: 400px;
+  max-width: 478px;
+}
+
+.cardTitle {
+  font-weight: bold;
+}
+
+.cardSubtitle {
+  color: #565656;
+  font-size: 14px;
+}

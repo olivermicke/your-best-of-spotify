@@ -1,30 +1,37 @@
 import { GetServerSideProps } from 'next';
+
+import { CardGrid, Entity } from '../components/layout/CardGrid';
+import { mapTopArtistsToEntities } from '../components/layout/CardGrid.helpers';
+import { SpotifyLoginUrlContext } from '../contexts/spotify-login-url-context';
 import {
   getAccessToken,
+  getSpotifyLoginUrl,
   getSpotifyTopArtists,
 } from '../lib/spotify-api-client';
-import { TopArtist } from '../lib/spotify-api-client.types';
 
 type ServerSideProps = {
-  topArtists: TopArtist[];
+  entities: Entity[];
+  spotifyLoginUrl: string;
 };
 
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   context
 ) => {
-  const accessToken = getAccessToken(context);
-  const topArtists = await getSpotifyTopArtists(accessToken);
+  const spotifyLoginUrl = getSpotifyLoginUrl();
 
-  return { props: { topArtists } };
+  const accessToken = getAccessToken(context);
+
+  const topArtists = await getSpotifyTopArtists(accessToken);
+  const entities = mapTopArtistsToEntities(topArtists);
+
+  return { props: { entities, spotifyLoginUrl } };
 };
 
-function Artists({ topArtists }: ServerSideProps) {
+function Artists({ entities, spotifyLoginUrl }: ServerSideProps) {
   return (
-    <ol>
-      {topArtists.map((artist) => (
-        <li key={artist.id}>{artist.name}</li>
-      ))}
-    </ol>
+    <SpotifyLoginUrlContext.Provider value={spotifyLoginUrl}>
+      <CardGrid entities={entities} />
+    </SpotifyLoginUrlContext.Provider>
   );
 }
 

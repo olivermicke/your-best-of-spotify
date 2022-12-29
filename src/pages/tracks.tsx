@@ -1,28 +1,38 @@
 import { GetServerSideProps } from 'next';
-import { getAccessToken, getSpotifyTopTracks } from '../lib/spotify-api-client';
-import { TopTrack } from '../lib/spotify-api-client.types';
+
+import { CardGrid, Entity } from '../components/layout/CardGrid';
+import { mapTopTracksToEntities } from '../components/layout/CardGrid.helpers';
+import { SpotifyLoginUrlContext } from '../contexts/spotify-login-url-context';
+import {
+  getAccessToken,
+  getSpotifyLoginUrl,
+  getSpotifyTopTracks,
+} from '../lib/spotify-api-client';
 
 type ServerSideProps = {
-  topTracks: TopTrack[];
+  entities: Entity[];
+  spotifyLoginUrl: string;
 };
 
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
   context
 ) => {
-  const accessToken = getAccessToken(context);
-  const topTracks = await getSpotifyTopTracks(accessToken);
+  const spotifyLoginUrl = getSpotifyLoginUrl();
 
-  return { props: { topTracks } };
+  const accessToken = getAccessToken(context);
+
+  const topTracks = await getSpotifyTopTracks(accessToken);
+  const entities = mapTopTracksToEntities(topTracks);
+
+  return { props: { entities, spotifyLoginUrl } };
 };
 
-function Artists({ topTracks }: ServerSideProps) {
+function Tracks({ entities, spotifyLoginUrl }: ServerSideProps) {
   return (
-    <ol>
-      {topTracks.map((tracks) => (
-        <li key={tracks.id}>{tracks.name}</li>
-      ))}
-    </ol>
+    <SpotifyLoginUrlContext.Provider value={spotifyLoginUrl}>
+      <CardGrid entities={entities} />
+    </SpotifyLoginUrlContext.Provider>
   );
 }
 
-export default Artists;
+export default Tracks;
