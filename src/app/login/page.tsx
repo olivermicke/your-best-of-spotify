@@ -1,21 +1,13 @@
-import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
-import styles from '../components/layout/LoginPage.module.css';
-import { WiredButton } from '../components/wired-elements/WiredButton';
-import { getSpotifyLoginUrl } from '../lib/spotify-api-client';
+import { WiredButton } from 'components/wired-elements/WiredButton';
+import { getSpotifyLoginUrl } from 'lib/spotify-api-client';
 
-type ServerSideProps = { spotifyLoginUrl: string };
+import styles from './page.module.css';
 
-export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (
-  _context
-) => {
+const LoginPage = () => {
   const spotifyLoginUrl = getSpotifyLoginUrl();
 
-  return { props: { spotifyLoginUrl } };
-};
-
-function Login({ spotifyLoginUrl }: ServerSideProps) {
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Your Best Of Spotify</h1>
@@ -33,6 +25,6 @@ function Login({ spotifyLoginUrl }: ServerSideProps) {
       </div>
     </div>
   );
-}
+};
 
-export default Login;
+export default LoginPage;

@@ -1,8 +1,9 @@
+'use client';
 import Link from 'next/link';
 
-import { WiredButton } from '../../../components/wired-elements/WiredButton';
+import { WiredButton } from 'components/wired-elements/WiredButton';
 
-function Error() {
+function AuthSpotifyCallbackError() {
   return (
     <div>
       <p>Something went wrong.</p>
@@ -14,4 +15,4 @@ function Error() {
   );
 }
 
-export default Error;
+export default AuthSpotifyCallbackError;

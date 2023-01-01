@@ -1,6 +1,6 @@
-import { GetServerSidePropsContext } from 'next';
+import { cookies } from 'next/headers';
 
-import { ACCESS_TOKEN } from '../pages/auth/spotify/callback';
+import { ACCESS_TOKEN } from './spotify-api-client.constants';
 import {
   TopArtist,
   TopArtistsResponse,
@@ -30,6 +30,10 @@ const TOP_API_PROPS = {
   time_range: 'long_term',
 };
 
+export function getAccessToken(): string | null {
+  return cookies().get(ACCESS_TOKEN)?.value ?? null;
+}
+
 export function getUnauthorizedSpotifyApi(): any {
   return new SpotifyWebApi(SPOTIFY_CREDENTIALS);
 }
@@ -39,11 +43,6 @@ export function getAuthorizedSpotifyApi(accessToken: string): any {
   spotifyApi.setAccessToken(accessToken);
 
   return spotifyApi;
-}
-
-export function getAccessToken(context: GetServerSidePropsContext): string {
-  // The auth middleware ensures the existence of this token.
-  return context.req.cookies[ACCESS_TOKEN] as string;
 }
 
 export function getSpotifyLoginUrl(): string {
