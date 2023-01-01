@@ -1,5 +1,5 @@
+import { Menu } from './_components/menu';
 import styles from './layout.module.css';
-import { Menu } from './menu';
 
 const CardLayoutGroup = ({ children }: { children: React.ReactNode }) => {
   return (

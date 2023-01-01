@@ -4,9 +4,9 @@ import { FC, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
-import { WiredCombo } from '../../components/wired-elements/WiredCombo';
-import { WiredItem } from '../../components/wired-elements/WiredItem';
-import { SpotifyLoginUrlContext } from '../../contexts/spotify-login-url-context';
+import { WiredCombo } from '../../../components/wired-elements/WiredCombo';
+import { WiredItem } from '../../../components/wired-elements/WiredItem';
+import { SpotifyLoginUrlContext } from '../../../contexts/spotify-login-url-context';
 import styles from './menu.module.css';
 
 export const Menu: FC<{}> = () => {

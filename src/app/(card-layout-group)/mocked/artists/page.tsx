@@ -1,6 +1,6 @@
 import { mockedTopArtists } from 'lib/mocked-top-artists';
 
-import { CardGrid } from '../../card-grid';
+import { CardGrid } from '../../_components/card-grid';
 
 const MockedArtistsPage = async () => {
   const entities = mockedTopArtists;

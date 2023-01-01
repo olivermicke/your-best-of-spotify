@@ -1,4 +1,4 @@
-import { Entity } from '../app/(card-layout-group)/card-grid';
+import { Entity } from '../app/(card-layout-group)/_components/card-grid';
 
 export const mockedTopArtists: Entity[] = [
   {

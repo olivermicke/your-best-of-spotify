@@ -1,4 +1,4 @@
-import { TopArtist, TopTrack } from '../../lib/spotify-api-client.types';
+import { TopArtist, TopTrack } from '../../../lib/spotify-api-client.types';
 import { Entity } from './card-grid';
 
 export function mapTopArtistsToEntities(topArtists: TopArtist[]): Entity[] {
