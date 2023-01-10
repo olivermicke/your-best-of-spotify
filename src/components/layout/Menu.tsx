@@ -50,7 +50,7 @@ export const Menu: FC<{}> = () => {
           </Link>
         ) : (
           <Link className={styles.menuLink} href={mockedDataPath}>
-            Use mocked data instead
+            Use sample data instead
           </Link>
         )}
       </div>
