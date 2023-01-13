@@ -1,0 +1,45 @@
+---
+export interface Props {
+  isMocked: boolean;
+}
+
+const { isMocked } = Astro.props;
+---
+
+<menu class='menu'>
+  <wired-combo selected='artists'>
+    <wired-item value='artists'>Artists</wired-item>
+    <wired-item value='tracks'>Tracks</wired-item>
+  </wired-combo>
+  <div class='menu-links'>
+    {
+      isMocked ? (
+        <a class='menu-link' href=''>
+          Use your own data instead
+        </a>
+      ) : (
+        <a class='menu-link' href=''>
+          Use sample data instead
+        </a>
+      )
+    }
+  </div>
+</menu>
+<style>
+  .menu {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-links {
+    align-items: center;
+    display: flex;
+    margin: 0 0 0 32px;
+    padding: 0;
+  }
+
+  .menu-link {
+    text-decoration: underline;
+  }
+</style>

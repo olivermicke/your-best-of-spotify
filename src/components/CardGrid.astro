@@ -1,0 +1,67 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import type { Entity } from '../types/Entity';
+
+export interface Props {
+  entities: Entity[];
+  isMocked: boolean;
+  title: string;
+}
+
+const { entities, isMocked, title } = Astro.props;
+---
+
+<MainLayout isMocked={isMocked} title={title}>
+  <section class='card-deck'>
+    {
+      entities.map(({ image, name, subtitle }) => (
+        <wired-card class='card' elevation={3}>
+          <wired-image
+            alt={`album cover of ${name}`}
+            elevation={2}
+            height={image.height}
+            src={image.src}
+            width={image.width}
+          />
+          <p class='card-title'>{name}</p>
+          {subtitle && <p class='card-subtitle'>{subtitle}</p>}
+        </wired-card>
+      ))
+    }
+  </section>
+</MainLayout>
+<style>
+  .card-deck {
+    display: grid;
+    margin: 48px auto 0 auto;
+    grid-template-columns: 1fr;
+    grid-gap: 32px;
+  }
+
+  @media only screen and (min-width: 600px) {
+    .card-deck {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media only screen and (min-width: 950px) {
+    .card-deck {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  .card {
+    padding: 20px;
+    max-width: 400px;
+    max-width: 478px;
+  }
+
+  .card-title {
+    font-weight: bold;
+  }
+
+  .card-subtitle {
+    color: #565656;
+    font-size: 14px;
+  }
+</style>

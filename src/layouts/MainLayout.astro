@@ -1,0 +1,24 @@
+---
+import Layout from './Layout.astro';
+import Menu from './Menu.astro';
+
+export interface Props {
+  isMocked: boolean;
+  title: string;
+}
+
+const { isMocked, title } = Astro.props;
+---
+
+<Layout title={title}>
+  <div class='content'>
+    <Menu isMocked={isMocked} />
+    <main><slot /></main>
+  </div>
+</Layout>
+<style>
+  .content {
+    margin: 32px;
+    max-width: 1200px;
+  }
+</style>
