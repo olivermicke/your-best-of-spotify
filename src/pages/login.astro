@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title='Login'>
+  <div class='container'>
+    <h1 class='heading'>Your Best Of Spotify</h1>
+    <p>Find out your top artists and tracks.</p>
+    <p>
+      Don&apos;t want to login? Use my personal data as a substitue for yours!
+    </p>
+    <div class='linkContainer'>
+      <a class='link' href='TODO:'>
+        <wired-button elevation={3}>Sign in with Spotify</wired-button>
+      </a>
+      <a class='link' href='/mocked/artists'> Use sample data</a>
+    </div>
+  </div>
+</Layout>
+<style scoped>
+  .container {
+    margin: 32px;
+  }
+
+  .heading {
+    margin-bottom: 32px;
+  }
+
+  .linkContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+  }
+
+  .link {
+    text-decoration: underline;
+  }
+
+  .link:nth-child(2) {
+    margin-top: 32px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .linkContainer {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .link:nth-child(2) {
+      margin-top: 0;
+      margin-left: 32px;
+    }
+  }
+</style>
