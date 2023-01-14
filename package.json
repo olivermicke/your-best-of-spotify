@@ -8,9 +8,14 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "vercel:dev": "vercel dev"
   },
   "dependencies": {
+    "@astrojs/vercel": "^2.4.0",
     "astro": "^1.9.0"
+  },
+  "devDependencies": {
+    "vercel": "^28.12.4"
   }
 }
