@@ -7,9 +7,7 @@ import { MainLayout } from './MainLayout';
 
 export type Entity = {
   image: {
-    height: number;
     src: string;
-    width: number;
   };
   name: string;
   subtitle?: string;
@@ -25,13 +23,7 @@ export const CardGrid: FC<Props> = ({ entities }) => {
       <section className={styles.cardDeck}>
         {entities.map(({ image, name, subtitle }) => (
           <WiredCard className={styles.card} elevation={3} key={name}>
-            <WiredImage
-              alt={`album cover of ${name}`}
-              elevation={2}
-              height={image.height}
-              src={image.src}
-              width={image.width}
-            />
+            <WiredImage alt={`album cover of ${name}`} src={image.src} />
             <p className={styles.cardTitle}>{name}</p>
             {subtitle && <p className={styles.cardSubtitle}>{subtitle}</p>}
           </WiredCard>

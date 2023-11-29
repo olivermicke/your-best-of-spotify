@@ -9,25 +9,16 @@ declare global {
 type Props = {
   alt: string;
   elevation?: number;
-  height: number;
   src: string;
-  width: number;
 };
 
-export const WiredImage: React.FC<Props> = ({
-  alt,
-  elevation,
-  height,
-  src,
-  width,
-}) => {
+export const WiredImage: React.FC<Props> = ({ alt, elevation, src }) => {
   return (
     <wired-image
       alt={alt}
       elevation={elevation}
-      height={height}
       src={src}
-      width={width}
+      styles='aspect-ratio: 1; object-fit: cover'
     />
   );
 };

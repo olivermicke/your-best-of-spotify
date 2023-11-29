@@ -4209,6 +4209,7 @@ path {
         (this.elevation = 1),
         (this.src =
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='),
+        (this.styles = ''),
         window.ResizeObserver &&
           (this.resizeObserver = new window.ResizeObserver(() => {
             this.svg && this.wiredRender();
@@ -4238,7 +4239,7 @@ path {
     }
     render() {
       return E`
-    <img alt="${this.alt}" loading="lazy" src="${this.src}">
+    <img alt="${this.alt}" loading="lazy" src="${this.src}" style="${this.styles}">
     <div id="overlay"><svg></svg></div>
     `;
     }
@@ -4321,6 +4322,12 @@ path {
       [re({ type: String }), Vt('design:type', String)],
       Ut.prototype,
       'src',
+      void 0
+    ),
+    Ht(
+      [re({ type: String }), Vt('design:type', String)],
+      Ut.prototype,
+      'styles',
       void 0
     ),
     (Ut = Ht([ie('wired-image'), Vt('design:paramtypes', [])], Ut));
